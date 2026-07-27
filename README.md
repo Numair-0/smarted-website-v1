@@ -1,220 +1,235 @@
-# Smarted Systems — Official Website
+<div align="center">
 
-The production codebase for [smartedsystems.in](https://smartedsystems.in) —
-the digital identity of Smarted Systems, an AI engineering studio building
-toward Smarted, an AI-native Business Operating System.
+# SMARTED Systems
 
-## Vision
+### AI Engineering Studio
 
-This site exists to do one job well: make a technical, skeptical enterprise
-buyer (a CIO, CFO, or technical founder) believe — within the first screen —
-that Smarted Systems builds deterministic, auditable, production-grade AI
-systems, not another "AI wrapper." Every design and content decision on this
-site is traceable back to the company's Strategic Blueprint. Nothing here is
-templated marketing filler: no fake clients, no fake stats, no fake
-testimonials. Where real information doesn't exist yet (team photos, case
-studies), the relevant section is built to accept it later rather than
-faking it now.
+Building the future of **AI-native Business Operating Systems (BizOS)**
 
-## Tech Stack
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38BDF8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/Vercel-Ready-black?style=for-the-badge&logo=vercel)](https://vercel.com/)
 
-| Layer | Choice |
-|---|---|
-| Framework | Next.js 15 (App Router, React Server Components by default) |
-| Language | TypeScript (strict mode) |
-| Styling | Tailwind CSS, with a custom token system (see Design System) |
-| Motion | Framer Motion (scroll reveals, micro-interactions) |
-| Forms | React Hook Form + Zod |
-| Icons | lucide-react |
-| Fonts | next/font/google — Space Grotesk (display), Inter (body), IBM Plex Mono (utility) |
+Official website for **SMARTED Systems**, an AI Engineering Studio focused on building deterministic, production-grade AI software and the future **SMARTED Business Operating System (BizOS).**
 
-Client Components (`"use client"`) are used only where interactivity is
-unavoidable: the mobile nav toggle, the FAQ accordion, the timeline, the
-contact form, and anything using Framer Motion. Every page component itself
-is a Server Component.
+🌐 **Website:** https://smartedsystems.in
 
-## Architecture & Folder Structure
+</div>
 
-```
+---
+
+# About
+
+SMARTED Systems is an AI Engineering Studio that designs and builds intelligent software systems for modern businesses.
+
+Our long-term vision is to build an AI-native Business Operating System where AI becomes an active part of everyday business operations instead of existing as a separate tool.
+
+This repository contains the complete source code of the official SMARTED Systems website.
+
+---
+
+# Features
+
+- Modern Next.js 15 App Router
+- React Server Components
+- TypeScript (Strict Mode)
+- Tailwind CSS Design System
+- Framer Motion Animations
+- Responsive Design
+- SEO Optimized
+- Metadata API
+- JSON-LD Structured Data
+- Sitemap & Robots
+- Contact API
+- Accessibility Friendly
+- Enterprise Architecture
+
+---
+
+# Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| Next.js 15 | Framework |
+| React 19 | UI |
+| TypeScript | Type Safety |
+| Tailwind CSS | Styling |
+| Framer Motion | Animations |
+| React Hook Form | Forms |
+| Zod | Validation |
+| Lucide React | Icons |
+
+---
+
+# Folder Structure
+
+```text
 src/
-  app/                        # Routes (App Router)
-    layout.tsx                 # Root layout: fonts, metadata, schema, nav/footer
-    page.tsx                   # Home
-    about/page.tsx
-    services/page.tsx
-    industries/page.tsx
-    team/page.tsx
-    contact/page.tsx
-    privacy-policy/page.tsx
-    terms-and-conditions/page.tsx
-    not-found.tsx               # Custom 404
-    sitemap.ts                  # Metadata API — generates /sitemap.xml
-    robots.ts                   # Metadata API — generates /robots.txt
-    manifest.ts                 # Metadata API — generates /manifest.webmanifest
-    icon.png / apple-icon.png / favicon.ico   # Auto-detected icon conventions
-    api/contact/route.ts        # Contact form submission handler
-    globals.css                 # Design tokens, base layer, component classes
-
-  components/
-    layout/                     # Navbar, Footer — site chrome
-    home/                       # Sections unique to the homepage
-    shared/                     # Reused across multiple pages (PageHeader,
-                                 # Breadcrumbs, ContactForm, WhatsAppButton)
-    motion/                     # Animation primitives (Reveal, KnotDraw)
-
-  data/                         # Structured content — the "CMS" for now
-    services.ts / industries.ts / principles.ts / timeline.ts / faq.ts / team.ts
-
-  lib/
-    site-config.ts              # Single source of truth: company name, email,
-                                 # WhatsApp number, nav links — change once,
-                                 # updates everywhere
-    validation.ts                # Zod schema for the contact form
-    cn.ts                        # Tailwind class-merge helper
+│
+├── app/
+│   ├── about
+│   ├── services
+│   ├── industries
+│   ├── team
+│   ├── contact
+│   ├── privacy-policy
+│   ├── terms-and-conditions
+│   ├── api
+│   └── globals.css
+│
+├── components/
+│   ├── home
+│   ├── shared
+│   ├── layout
+│   └── motion
+│
+├── data/
+│
+├── lib/
+│
+└── public/
 ```
 
-**Why a `data/` folder instead of hardcoded JSX:** every content block that
-might change independently of layout (services, industries, FAQ, timeline,
-team) lives in a typed data file. Pages and components import and render it.
-This means updating a service description or adding a team member never
-requires touching component code — and it's a straight path to swapping
-these files for a real CMS or database later without restructuring anything.
+---
 
-## Design System
+# Getting Started
 
-The palette, type system, and signature motion were derived directly from
-the blueprint's brand positioning (white background, indigo/blue/cyan,
-premium, minimal, no dark theme) — not a generic template default.
+Clone the repository
 
-- **Color** — `ledger` (deep indigo, the "single source of truth" tone),
-  `execute` (blue, primary interactive color), `semantic` (cyan, used
-  sparingly as an intelligence/AI accent), plus `canvas` and `ink` neutrals.
-  See `tailwind.config.ts`.
-- **Type** — Space Grotesk for display/headings (geometric, technical),
-  Inter for body copy, IBM Plex Mono for eyebrows/labels/data — reinforcing
-  the "deterministic engineering" brand voice rather than a soft, generic
-  sans-everywhere feel.
-- **Signature element** — `KnotDraw` (`components/motion/KnotDraw.tsx`): a
-  line-art rendition of the two interlocking loops in the Smarted mark that
-  draws itself in on the homepage hero. It's a literal expression of the
-  brand thesis — two separate loops resolving into one interlocked
-  structure — used once, deliberately, rather than as decoration repeated
-  everywhere.
-- **Motion** — a single reveal primitive (`components/motion/Reveal.tsx`)
-  is reused across every section so animation stays consistent instead of
-  scattered. `prefers-reduced-motion` is respected globally in `globals.css`.
+```bash
+git clone https://github.com/Numair-0/smarted-website-v1.git
+```
 
-## Installation
+Move into the project
+
+```bash
+cd smarted-website
+```
+
+Install dependencies
 
 ```bash
 npm install
 ```
 
-## Development
+Start development server
 
 ```bash
 npm run dev
 ```
 
-Visit `http://localhost:3000`.
+Open
 
-## Production
+```
+http://localhost:3000
+```
+
+---
+
+# Production
+
+Build
 
 ```bash
 npm run build
+```
+
+Run
+
+```bash
 npm run start
 ```
 
-`npm run build` has been verified to compile cleanly (TypeScript strict mode,
-zero ESLint warnings, all 9 routes + API route + sitemap/robots/manifest
-statically generate successfully).
+---
 
-## Environment Variables
+# SEO
 
-See `.env.example`. None are required to run the site — they only activate
-optional integrations (see below).
+- Dynamic Metadata
+- OpenGraph
+- Twitter Cards
+- JSON-LD
+- Robots
+- Sitemap
+- Canonical URLs
 
-## Deployment
+---
 
-Any Next.js-compatible host works (Vercel is the path of least resistance
-for the App Router + Metadata API features used here). Point the domain
-`smartedsystems.in` at the deployment and set `NEXT_PUBLIC_SITE_URL` if the
-canonical URL in `src/lib/site-config.ts` ever needs to differ per
-environment.
+# Accessibility
 
-## Coding Standards & Naming Conventions
+- Semantic HTML
+- Keyboard Navigation
+- Screen Reader Friendly
+- Focus States
+- Reduced Motion Support
 
-- Components: PascalCase file and export names (`Hero.tsx`, `export function Hero()`).
-- One component per file; co-locate nothing that isn't reused.
-- Data files export typed arrays/objects with a documented shape — no `any`.
-- Tailwind utility classes are preferred over custom CSS; shared patterns
-  (buttons, cards, section spacing) are extracted into `@layer components`
-  in `globals.css` rather than duplicated across files.
-- Every page exports its own `metadata` object — no page inherits a generic
-  title/description from a parent layout.
+---
 
-## Accessibility
+# Performance
 
-- Semantic HTML landmarks (`header`, `nav`, `main`, `footer`) throughout.
-- A "Skip to content" link at the top of every page.
-- Visible focus rings via `:focus-visible` (see `globals.css`), never
-  suppressed.
-- All interactive icons carry `aria-label` or `aria-hidden` as appropriate.
-- Form fields use associated `<label>` elements, `aria-invalid`, and
-  `aria-describedby` for error messages.
-- `prefers-reduced-motion` is respected at the CSS level, in addition to
-  Framer Motion's own handling.
+- React Server Components
+- App Router
+- Optimized Fonts
+- Optimized Images
+- Static Generation
+- Fast Navigation
 
-## SEO
+---
 
-- Every route has unique `Metadata` (title, description, canonical URL).
-- OpenGraph and Twitter Card metadata set globally in the root layout.
-- JSON-LD structured data: `Organization` and `WebSite` (root layout),
-  `FAQPage` (home page), `ItemList` of `Service` (services page), and
-  `BreadcrumbList` (every interior page, via `components/shared/Breadcrumbs.tsx`).
-- `sitemap.ts` and `robots.ts` use the Next.js Metadata API to generate
-  `/sitemap.xml` and `/robots.txt` automatically — no static files to keep
-  in sync.
+# Deployment
 
-## What's Deliberately Left as an Integration Point
+The project is optimized for **Vercel** deployment.
 
-Per the brief, this site never fabricates data. A few things are wired up
-structurally but need a real decision/credential from you before they're
-"live":
+```bash
+npm run build
+```
 
-1. **Contact form email delivery** — `src/app/api/contact/route.ts`
-   validates and logs submissions today. Wire in a transactional email
-   provider (Resend, Postmark, SES) using the inline example in that file,
-   and add the API key to `.env.local`.
-2. **Team page** (`src/data/team.ts`) — intentionally empty. Add real team
-   members here; the page and homepage snapshot both render correctly with
-   zero, one, or many entries.
-3. **Case studies / client logos** — no placeholders exist anywhere in the
-   codebase. Add them to `src/data/` once you have real, permissioned
-   examples to publish.
-4. **Legal pages** — the Privacy Policy and Terms & Conditions are
-   reasonable starting drafts, not legal advice. Have them reviewed by
-   counsel before publishing, particularly for applicable data-protection
-   law (India's DPDP Act, and GDPR/CCPA if you serve those regions).
+Connect your GitHub repository with Vercel and point your custom domain to:
 
-## Future Scaling Notes
+```
+smartedsystems.in
+```
 
-- If content velocity increases, `src/data/*.ts` files are a natural
-  migration point to a headless CMS (Sanity, Contentful) — the page
-  components already treat this data as an external, typed source.
-- If GSAP/Lenis-level scroll choreography becomes a priority beyond the
-  current Framer Motion reveals, they can be layered in at the section
-  level without restructuring the component tree.
-- The `data/` + `components/{home,shared}` split is designed so that adding
-  a tenth page doesn't require touching the existing nine.
+---
 
-## Contribution Guide
+# Roadmap
 
-1. Branch from `main`.
-2. Run `npm run typecheck && npm run lint` before opening a PR.
-3. Keep new content in `src/data/`, not hardcoded in JSX, unless it's truly
-   one-off page copy.
-4. Match the existing motion pattern (`Reveal`) rather than introducing a
-   new animation approach per component.
-#   s m a r t e d - w e b s i t e  
- 
+- AI Business Operating System
+- AI Agents
+- Enterprise Dashboard
+- Case Studies
+- Blog Platform
+- CMS Integration
+- Customer Portal
+- Analytics Platform
+
+---
+
+# Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push your branch
+5. Open a Pull Request
+
+---
+
+# License
+
+Copyright © 2026 SMARTED Systems.
+
+All Rights Reserved.
+
+---
+
+<div align="center">
+
+### SMARTED Systems
+
+**Engineering the Future of Intelligent Business Software**
+
+Made with ❤️ using Next.js, React & TypeScript.
+
+</div>
