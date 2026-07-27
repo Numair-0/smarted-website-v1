@@ -216,3 +216,5 @@ structurally but need a real decision/credential from you before they're
    one-off page copy.
 4. Match the existing motion pattern (`Reveal`) rather than introducing a
    new animation approach per component.
+#   s m a r t e d - w e b s i t e  
+ 
